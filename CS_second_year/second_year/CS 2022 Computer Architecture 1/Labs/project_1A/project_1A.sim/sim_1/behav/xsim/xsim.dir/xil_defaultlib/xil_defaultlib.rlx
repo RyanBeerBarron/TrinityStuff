@@ -1,0 +1,14 @@
+0.6
+2017.4
+Dec 15 2017
+21:07:18
+U:/CS2022/project_1A/project_1A.srcs/sim_1/new/tb_decoder.vhd,1518984493,vhdl,,,,tb_decoder,,,,,,,,
+U:/CS2022/project_1A/project_1A.srcs/sim_1/new/tb_mux8_3.vhd,1519139524,vhdl,,,,tb_mux8_3,,,,,,,,
+U:/CS2022/project_1A/project_1A.srcs/sim_1/new/tb_register16bit.vhd,1518987115,vhdl,,,,tb_register16bit,,,,,,,,
+U:/CS2022/project_1A/project_1A.srcs/sim_1/new/tb_register_file_16bit.vhd,1519138155,vhdl,,,,tb_register_file_16bit,,,,,,,,
+U:/CS2022/project_1A/project_1A.srcs/sim_1/new/tub_mux2_1.vhd,1519139359,vhdl,,,,tub_mux2_1,,,,,,,,
+U:/CS2022/project_1A/project_1A.srcs/sources_1/imports/new/mux2_1_16bit.vhd,1518976457,vhdl,,,,mux2_1_16bit,,,,,,,,
+U:/CS2022/project_1A/project_1A.srcs/sources_1/imports/new/mux8_3_16bit.vhd,1518977361,vhdl,,,,mux8_3_16bit,,,,,,,,
+U:/CS2022/project_1A/project_1A.srcs/sources_1/imports/new/register_16bit.vhd,1518976356,vhdl,,,,register_16bit,,,,,,,,
+U:/CS2022/project_1A/project_1A.srcs/sources_1/imports/new/register_file_16bit.vhd,1518979993,vhdl,,,,register_file_16bit,,,,,,,,
+U:/CS2022/project_1A/project_1A.srcs/sources_1/new/decoder3_8.vhd,1518977279,vhdl,,,,decoder3_8,,,,,,,,

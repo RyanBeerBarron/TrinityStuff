@@ -1,0 +1,13 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+F:\CS1022Projects\Assignment.1.1.Adjust\Adjust.uvproj
+Project File Date:  03/07/2017
+
+<h2>Output:</h2>
+Build target 'Simulator'
+linking...
+Program Size: Code=6984 RO-data=808 RW-data=18144 ZI-data=311560  
+".\Adjust.axf" - 0 Errors, 0 Warning(s).

@@ -1,0 +1,83 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             Flags, CODE, READONLY
+    2 00000000                 IMPORT           main
+    3 00000000                 EXPORT           start
+    4 00000000         
+    5 00000000         start
+    6 00000000 E3A01004        LDR              R1, =4
+    7 00000004         
+    8 00000004 E3510005        CMP              R1, #5
+    9 00000008 3A000000        BLO              idk
+   10 0000000C E3A01000        LDR              R1, =0
+   11 00000010         idk
+   12 00000010         
+   13 00000010 EAFFFFFE 
+                       stop    B                stop
+   14 00000014         
+   15 00000014                 END
+Command Line: --debug --xref --apcs=interwork --depend=.\flags.d -o.\flags.o -I
+D:\Keil\ARM\RV31\INC -ID:\Keil\ARM\CMSIS\Include -ID:\Keil\ARM\Inc\Philips --pr
+edefine="__EVAL SETA 1" --predefine="__MICROLIB SETA 1" --predefine="NO_CLOCK_S
+ETUP SETA 1" --predefine="NO_EMC_SETUP SETA 1" --predefine="RAM_INTVEC SETA 1" 
+--predefine="RAM_MODE SETA 1" --predefine="REMAP SETA 1" --list=.\flags.lst Fla
+gs.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+Flags 00000000
+
+Symbol: Flags
+   Definitions
+      At line 1 in file Flags.s
+   Uses
+      None
+Comment: Flags unused
+idk 00000010
+
+Symbol: idk
+   Definitions
+      At line 11 in file Flags.s
+   Uses
+      At line 9 in file Flags.s
+Comment: idk used once
+start 00000000
+
+Symbol: start
+   Definitions
+      At line 5 in file Flags.s
+   Uses
+      At line 3 in file Flags.s
+Comment: start used once
+stop 00000010
+
+Symbol: stop
+   Definitions
+      At line 13 in file Flags.s
+   Uses
+      At line 13 in file Flags.s
+Comment: stop used once
+4 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+External symbols
+
+main 00000000
+
+Symbol: main
+   Definitions
+      At line 2 in file Flags.s
+   Uses
+      None
+Comment: main unused
+1 symbol
+342 symbols in table

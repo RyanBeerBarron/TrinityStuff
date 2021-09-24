@@ -1,0 +1,184 @@
+package assignment_3_HT;
+
+import java.util.LinkedList;
+/*
+ * A Contest to Meet (ACM) is a reality TV contest that sets three contestants at three random
+ * city intersections. In order to win, the three contestants need all to meet at any intersection
+ * of the city as fast as possible.
+ * It should be clear that the contestants may arrive at the intersections at different times, in
+ * which case, the first to arrive can wait until the others arrive.
+ * From an estimated walking speed for each one of the three contestants, ACM wants to determine the
+ * minimum time that a live TV broadcast should last to cover their journey regardless of the contestants’
+ * initial positions and the intersection they finally meet. You are hired to help ACM answer this question.
+ * You may assume the following:
+ *     Each contestant walks at a given estimated speed.
+ *     The city is a collection of intersections in which some pairs are connected by one-way
+ * streets that the contestants can use to traverse the city.
+ *
+ * This class implements the competition using Floyd-Warshall algorithm
+ */
+
+public class CompetitionFloydWarshall 
+{
+	final WeightedGraph graph;
+	final int sA, sB, sC;
+	double highestDistance;
+	
+	private double[][] weightedPaths;
+	
+	
+	private class DirectedWeightedEdge
+	{
+		private final int v, w;
+		private final double weight;
+		
+		DirectedWeightedEdge(int v, int w, double weight)
+		{
+			this.v = v;
+			this.w = w;
+			this.weight = weight;
+		}
+		
+		int from()
+		{
+			return v;
+		}
+		int to()
+		{
+			return w;
+		}
+		double weight()
+		{
+			return weight;
+		}
+		public String toString()
+		{
+			String s = "";
+			s = s + v;
+			s = s + " " + w;
+			s = s + " " + weight;
+			return s;
+		}
+	}
+	
+	private class WeightedGraph
+	{
+		private final int V;
+		private int E;
+		private final LinkedList<DirectedWeightedEdge> [] adj;
+
+		WeightedGraph(int V)
+		{
+			this.V = V;
+			adj =(LinkedList<DirectedWeightedEdge>[]) new LinkedList[V];
+			for(int v = 0; v<V; v++)
+			{
+				adj[v] = new LinkedList<DirectedWeightedEdge>();
+			}
+		}
+		void addEdge(int v, int w, double weight)
+		{
+			DirectedWeightedEdge e = new DirectedWeightedEdge(v, w, weight);
+			adj[v].add(e);
+			E++;
+		}
+		void addEdge(DirectedWeightedEdge e)
+		{
+			int v = e.from();
+			adj[v].add(e);
+			E++;
+		}
+		Iterable<DirectedWeightedEdge> adj(int v)
+		{
+			return adj[v];
+		}
+		int V()
+		{
+			return V;
+		}
+		int E()
+		{
+			return E;
+		}
+	}
+	
+    /**
+     * @param filename: A filename containing the details of the city road network
+     * @param sA, sB, sC: speeds for 3 contestants
+     */
+    CompetitionFloydWarshall (String filename, int sA, int sB, int sC)
+    {
+    	In in = new In(filename);
+    	int v = in.readInt();
+    	this.graph = new WeightedGraph(v);
+    	int e = in.readInt();
+    	for(int i = 0; i<e; i++)
+    	{
+    		int source = in.readInt();
+    		int dest = in.readInt();
+    		double weight = in.readDouble();
+    		this.graph.addEdge(source, dest, weight);
+    	}
+    	this.sA = sA;
+    	this.sB = sB;
+    	this.sC = sC;
+    	highestDistance = 0;
+    	weightedPaths = new double[v][v];
+    	for(int i = 0; i < graph.V(); i++)
+    	{
+    		for(int j = 0; j < graph.V(); j++)
+    		{
+    			weightedPaths[i][j] = Double.POSITIVE_INFINITY;
+    		}
+    	}
+    	for(int i = 0; i < graph.V(); i++)
+    	{
+    		weightedPaths[i][i] = 0;
+    		for(DirectedWeightedEdge edge : graph.adj(i))
+    		{
+    			int dst = edge.to();
+    			double weight = edge.weight();
+    			weightedPaths[i][dst] = weight;
+    		}
+    	}
+    }
+
+
+    /**
+     * @return int: minimum minutes that will pass before the three contestants can meet
+     */
+    public int timeRequiredforCompetition()
+    {
+    	int lowestSpeed = lowestSpeed(sA, sB, sC);
+    	for( int k = 0; k<graph.V(); k++)
+    	{
+    		for( int i = 0; i<graph.V(); i++)
+    		{
+    			for( int j = 0; j < graph.V(); j++)
+    			{
+    				if( weightedPaths[i][k] + weightedPaths[k][j] < weightedPaths[i][j])
+    				{
+    					weightedPaths[i][j] = weightedPaths[i][k] + weightedPaths[k][j];
+    				}
+    			}
+    		}
+    	}
+    	
+    	for( int i = 0; i <graph.V(); i++)
+    	{
+    		for ( int j = 0; j < graph.V(); j++)
+    		{
+    			if(highestDistance < weightedPaths[i][j]) highestDistance = weightedPaths[i][j];
+    		}
+    	}
+        return (int) Math.ceil(highestDistance*1000/lowestSpeed);
+    }
+    
+    
+    static int lowestSpeed(int sA, int sB, int sC)
+    {
+    	if(sA <= sB && sA <= sC ) return sA;
+    	else if(sB <= sA && sB <= sC ) return sB;
+    	else return sC;
+    }
+}

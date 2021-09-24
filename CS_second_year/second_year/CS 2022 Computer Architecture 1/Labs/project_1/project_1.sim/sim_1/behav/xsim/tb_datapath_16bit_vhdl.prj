@@ -1,0 +1,23 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../project_1.srcs/sources_1/new/ALU_16bit.vhd" \
+"../../../../project_1.srcs/sources_1/new/Arithmetic_Circuit_16bit.vhd" \
+"../../../../project_1.srcs/sources_1/new/Shifter_unit_16bit.vhd" \
+"../../../../project_1.srcs/sources_1/new/datapath_16bit.vhd" \
+"../../../../project_1.srcs/sources_1/imports/VHDL SOURCE FILES/decoder3_8.vhd" \
+"../../../../project_1.srcs/sources_1/imports/VHDL SOURCE FILES/full_adder.vhd" \
+"../../../../project_1.srcs/sources_1/new/function_unit_16bit.vhd" \
+"../../../../project_1.srcs/sources_1/imports/VHDL SOURCE FILES/input_logic_16bit.vhd" \
+"../../../../project_1.srcs/sources_1/new/logic_circuit_16bit.vhd" \
+"../../../../project_1.srcs/sources_1/imports/VHDL SOURCE FILES/mux2_1.vhd" \
+"../../../../project_1.srcs/sources_1/imports/VHDL SOURCE FILES/mux2_1_16bit.vhd" \
+"../../../../project_1.srcs/sources_1/new/mux3_1.vhd" \
+"../../../../project_1.srcs/sources_1/new/mux4_1_16bit.vhd" \
+"../../../../project_1.srcs/sources_1/imports/VHDL SOURCE FILES/mux8_3_16bit.vhd" \
+"../../../../project_1.srcs/sources_1/imports/VHDL SOURCE FILES/register_16bit.vhd" \
+"../../../../project_1.srcs/sources_1/imports/VHDL SOURCE FILES/register_file_16bit.vhd" \
+"../../../../project_1.srcs/sources_1/imports/VHDL SOURCE FILES/ripple_carry_adder_16bit.vhd" \
+"../../../../project_1.srcs/sim_1/new/tb_datapath_16bit.vhd" \
+
+# Do not sort compile order
+nosort

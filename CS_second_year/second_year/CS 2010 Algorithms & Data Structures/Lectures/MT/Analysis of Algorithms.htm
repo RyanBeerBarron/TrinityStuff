@@ -1,0 +1,1184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en"><head>
+
+<link rel="apple-touch-icon" href="http://algs4.cs.princeton.edu/apple-touch-icon.png">
+<link rel="shortcut icon" href="http://algs4.cs.princeton.edu/favicon.ico">
+
+<link rel="stylesheet" href="Analysis%20of%20Algorithms_files/algs4.css" type="text/css" media="screen">
+
+<meta name="google-site-verification" content="nYspbl5bNBQrNZKguiAAFTMVM7sq2P1WQYc8Oi6Okl0">
+<meta name="msvalidate.01" content="D4B7F6DF793EFF34DE96F611C2A367A5">
+
+<!-- IE HACKS -->
+<!--[if IE]>
+<style type="text/css" media="screen">
+ #menu ul li {float: left; width: 100%;}
+</style>
+<![endif]-->
+<!--[if lt IE 7]>
+<style type="text/css" media="screen">
+body {
+behavior: url(/csshover.htc);
+} 
+#menu ul li {float: left; width: 100%;}
+#menu ul li a {height: 1%;} 
+
+#menu a, #menu h2 {
+font: bold 0.9em/1.5em arial, helvetica, sans-serif;
+} 
+
+</style>
+<![endif]-->
+
+
+
+<title>
+Analysis of Algorithms</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="AUTHOR" content="Robert Sedgewick and Kevin Wayne">
+<meta name="KEYWORDS" content="Analysis of Algorithms,Algorithms,4th edition,data structures,Java,intro,introduction,Sedgewick,Wayne">
+<meta name="DESCRIPTION" content="The textbook Algorithms, 4th Edition by Robert Sedgewick and Kevin Wayne surveys the most important algorithms and data structures in use today. The broad perspective taken makes it an appropriate introduction to the field.">
+<meta name="TITLE" content="Analysis of Algorithms. Algorithms, 4th Edition by Robert Sedgewick and Kevin Wayne.">
+<meta name="ROBOTS" content="INDEX,FOLLOW">
+
+<script async="" src="Analysis%20of%20Algorithms_files/async-ads.js"></script><script type="text/javascript" async="" src="Analysis%20of%20Algorithms_files/cse.js"></script><script async="" src="Analysis%20of%20Algorithms_files/analytics.js"></script><script type="text/javascript" src="Analysis%20of%20Algorithms_files/swfobject.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-10811519-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+<script src="Analysis%20of%20Algorithms_files/jsapi" type="text/javascript"></script><link type="text/css" href="Analysis%20of%20Algorithms_files/defaulten.css" rel="stylesheet"><link type="text/css" href="Analysis%20of%20Algorithms_files/default.css" rel="stylesheet"><script type="text/javascript" src="Analysis%20of%20Algorithms_files/defaulten.js"></script><style type="text/css">
+.gsc-control-cse {
+font-family: Arial, sans-serif;
+border-color: #FFFFFF;
+background-color: #FFFFFF;
+}
+.gsc-control-cse .gsc-table-result {
+font-family: Arial, sans-serif;
+}
+input.gsc-input {
+border-color: #D9D9D9;
+}
+input.gsc-search-button {
+border-color: #666666;
+background-color: #CECECE;
+}
+.gsc-tabHeader.gsc-tabhInactive {
+border-color: #E9E9E9;
+background-color: #E9E9E9;
+}
+.gsc-tabHeader.gsc-tabhActive {
+border-top-color: #FF9900;
+border-left-color: #E9E9E9;
+border-right-color: #E9E9E9;
+background-color: #FFFFFF;
+}
+.gsc-tabsArea {
+border-color: #E9E9E9;
+}
+.gsc-webResult.gsc-result,
+.gsc-results .gsc-imageResult {
+border-color: #FFFFFF;
+background-color: #FFFFFF;
+}
+.gsc-webResult.gsc-result:hover,
+.gsc-imageResult:hover {
+border-color: #FFFFFF;
+background-color: #FFFFFF;
+}
+.gsc-webResult.gsc-result.gsc-promotion:hover {
+border-color: #FFFFFF;
+background-color: #FFFFFF;
+}
+.gs-webResult.gs-result a.gs-title:link,
+.gs-webResult.gs-result a.gs-title:link b,
+.gs-imageResult a.gs-title:link,
+.gs-imageResult a.gs-title:link b {
+color: #0000CC;
+}
+.gs-webResult.gs-result a.gs-title:visited,
+.gs-webResult.gs-result a.gs-title:visited b,
+.gs-imageResult a.gs-title:visited,
+.gs-imageResult a.gs-title:visited b {
+color: #0000CC;
+}
+.gs-webResult.gs-result a.gs-title:hover,
+.gs-webResult.gs-result a.gs-title:hover b,
+.gs-imageResult a.gs-title:hover,
+.gs-imageResult a.gs-title:hover b {
+color: #0000CC;
+}
+.gs-webResult.gs-result a.gs-title:active,
+.gs-webResult.gs-result a.gs-title:active b,
+.gs-imageResult a.gs-title:active,
+.gs-imageResult a.gs-title:active b {
+color: #0000CC;
+}
+.gsc-cursor-page {
+color: #0000CC;
+}
+a.gsc-trailing-more-results:link {
+color: #0000CC;
+}
+.gs-webResult .gs-snippet,
+.gs-imageResult .gs-snippet,
+.gs-fileFormatType {
+color: #000000;
+}
+.gs-webResult div.gs-visibleUrl,
+.gs-imageResult div.gs-visibleUrl {
+color: #008000;
+}
+.gs-webResult div.gs-visibleUrl-short {
+color: #008000;
+}
+.gs-webResult div.gs-visibleUrl-short {
+display: none;
+}
+.gs-webResult div.gs-visibleUrl-long {
+display: block;
+}
+.gs-promotion div.gs-visibleUrl-short {
+display: none;
+}
+.gs-promotion div.gs-visibleUrl-long {
+display: block;
+}
+.gsc-cursor-box {
+border-color: #FFFFFF;
+}
+.gsc-results .gsc-cursor-box .gsc-cursor-page {
+border-color: #E9E9E9;
+background-color: #FFFFFF;
+color: #0000CC;
+}
+.gsc-results .gsc-cursor-box .gsc-cursor-current-page {
+border-color: #FF9900;
+background-color: #FFFFFF;
+color: #0000CC;
+}
+.gsc-webResult.gsc-result.gsc-promotion {
+border-color: #336699;
+background-color: #FFFFFF;
+}
+.gsc-completion-title {
+color: #0000CC;
+}
+.gsc-completion-snippet {
+color: #000000;
+}
+.gs-promotion a.gs-title:link,
+.gs-promotion a.gs-title:link *,
+.gs-promotion .gs-snippet a:link {
+color: #0000CC;
+}
+.gs-promotion a.gs-title:visited,
+.gs-promotion a.gs-title:visited *,
+.gs-promotion .gs-snippet a:visited {
+color: #0000CC;
+}
+.gs-promotion a.gs-title:hover,
+.gs-promotion a.gs-title:hover *,
+.gs-promotion .gs-snippet a:hover {
+color: #0000CC;
+}
+.gs-promotion a.gs-title:active,
+.gs-promotion a.gs-title:active *,
+.gs-promotion .gs-snippet a:active {
+color: #0000CC;
+}
+.gs-promotion .gs-snippet,
+.gs-promotion .gs-title .gs-promotion-title-right,
+.gs-promotion .gs-title .gs-promotion-title-right * {
+color: #000000;
+}
+.gs-promotion .gs-visibleUrl,
+.gs-promotion .gs-visibleUrl-short {
+color: #008000;
+}
+.gsc-input input.gsc-input {
+background: none repeat scroll 0% 0% white !important;
+}</style><style type="text/css">.gscb_a{display:inline-block;font:27px/13px arial,sans-serif}.gsst_a .gscb_a{color:#a1b9ed;cursor:pointer}.gsst_a:hover .gscb_a,.gsst_a:focus .gscb_a{color:#36c}.gsst_a{display:inline-block}.gsst_a{cursor:pointer;padding:0 4px}.gsst_a:hover{text-decoration:none!important}.gsst_b{font-size:16px;padding:0 2px;position:relative;user-select:none;-moz-user-select:none;white-space:nowrap}.gsst_e{opacity:0.55;}.gsst_a:hover .gsst_e,.gsst_a:focus .gsst_e{opacity:0.72;}.gsst_a:active .gsst_e{opacity:1;}.gsst_f{background:white;text-align:left}.gsst_g{background-color:white;border:1px solid #ccc;border-top-color:#d9d9d9;box-shadow:0 2px 4px rgba(0,0,0,0.2);-moz-box-shadow:0 2px 4px rgba(0,0,0,0.2);margin:-1px -3px;padding:0 6px}.gsst_h{background-color:white;height:1px;margin-bottom:-1px;position:relative;top:-1px}.gsib_a{width:100%;padding:4px 6px 0}.gsib_a,.gsib_b{vertical-align:top}.gssb_c{border:0;position:absolute;z-index:989}.gssb_e{border:1px solid #ccc;border-top-color:#d9d9d9;box-shadow:0 2px 4px rgba(0,0,0,0.2);-moz-box-shadow:0 2px 4px rgba(0,0,0,0.2);cursor:default}.gssb_f{visibility:hidden;white-space:nowrap}.gssb_k{border:0;display:block;position:absolute;top:0;z-index:988}.gsdd_a{border:none!important}.gscsep_a{display:none}.gsq_a{padding:0}.gssb_a{padding:0 7px}.gssb_a,.gssb_a td{white-space:nowrap;overflow:hidden;line-height:22px}#gssb_b{font-size:11px;color:#36c;text-decoration:none}#gssb_b:hover{font-size:11px;color:#36c;text-decoration:underline}.gssb_g{text-align:center;padding:8px 0 7px;position:relative}.gssb_h{font-size:15px;height:28px;margin:0.2em}.gssb_i{background:#eee}.gss_ifl{visibility:hidden;padding-left:5px}.gssb_i .gss_ifl{visibility:visible}a.gssb_j{font-size:13px;color:#36c;text-decoration:none;line-height:100%}a.gssb_j:hover{text-decoration:underline}.gssb_l{height:1px;background-color:#e5e5e5}.gssb_m{color:#000;background:#fff}.gsfe_a{border:1px solid #b9b9b9;border-top-color:#a0a0a0;box-shadow:inset 0px 1px 2px rgba(0,0,0,0.1);-moz-box-shadow:inset 0px 1px 2px rgba(0,0,0,0.1);-webkit-box-shadow:inset 0px 1px 2px rgba(0,0,0,0.1);}.gsfe_b{border:1px solid #4d90fe;outline:none;box-shadow:inset 0px 1px 2px rgba(0,0,0,0.3);-moz-box-shadow:inset 0px 1px 2px rgba(0,0,0,0.3);-webkit-box-shadow:inset 0px 1px 2px rgba(0,0,0,0.3);}.gssb_a{padding:0 7px}.gssb_e{border:0}.gssb_l{margin:5px 0}input.gsc-input::-webkit-input-placeholder{font-size:14px}input.gsc-input:-moz-placeholder{font-size:14px}input.gsc-input::-moz-placeholder{font-size:14px}input.gsc-input:-ms-input-placeholder{font-size:14px}input.gsc-input:focus::-webkit-input-placeholder{color:transparent}input.gsc-input:focus:-moz-placeholder{color:transparent}input.gsc-input:focus::-moz-placeholder{color:transparent}input.gsc-input:focus:-ms-input-placeholder{color:transparent}.gssb_c .gsc-completion-container{position:static}.gssb_c{z-index:5000}.gsc-completion-container table{background:transparent;font-size:inherit;font-family:inherit}.gssb_c > tbody > tr,.gssb_c > tbody > tr > td,.gssb_d,.gssb_d > tbody > tr,.gssb_d > tbody > tr > td,.gssb_e,.gssb_e > tbody > tr,.gssb_e > tbody > tr > td{padding:0;margin:0;border:0}.gssb_a table,.gssb_a table tr,.gssb_a table tr td{padding:0;margin:0;border:0}</style></head>
+
+
+<body>
+
+<div id="menu">
+<div align="center">
+<a class="picture" href="http://algs4.cs.princeton.edu/">
+<img src="Analysis%20of%20Algorithms_files/cover.png" alt="Algorithms, 4th Edition by Robert Sedgewick and Kevin Wayne" width="189" height="236" border="0">
+</a>  
+</div>
+
+
+
+
+
+<ul>
+  <li><a class="title" href="http://algs4.cs.princeton.edu/">Algorithms, 4th edition</a>
+
+<ul>
+
+
+      <li> <a href="http://algs4.cs.princeton.edu/10fundamentals">1.&nbsp;&nbsp;Fundamentals</a>
+        <ul>
+          <li> <a href="http://algs4.cs.princeton.edu/11model">1.1&nbsp;&nbsp;Programming Model</a>
+          </li><li> <a href="http://algs4.cs.princeton.edu/12oop">1.2&nbsp;&nbsp;Data Abstraction</a>
+          </li><li> <a href="http://algs4.cs.princeton.edu/13stacks">1.3&nbsp;&nbsp;Stacks and Queues</a>
+          </li><li> <a href="http://algs4.cs.princeton.edu/14analysis">1.4&nbsp;&nbsp;Analysis of Algorithms</a>
+          </li><li> <a href="http://algs4.cs.princeton.edu/15uf">1.5&nbsp;&nbsp;Case Study: Union-Find</a>
+        </li></ul>
+
+      </li><li> <a href="http://algs4.cs.princeton.edu/20sorting">2.&nbsp;&nbsp;Sorting</a>
+        <ul>
+          <li> <a href="http://algs4.cs.princeton.edu/21elementary">2.1&nbsp;&nbsp;Elementary Sorts</a>
+          </li><li> <a href="http://algs4.cs.princeton.edu/22mergesort">2.2&nbsp;&nbsp;Mergesort</a>
+          </li><li> <a href="http://algs4.cs.princeton.edu/23quicksort">2.3&nbsp;&nbsp;Quicksort</a>
+          </li><li> <a href="http://algs4.cs.princeton.edu/24pq">2.4&nbsp;&nbsp;Priority Queues</a>
+          </li><li> <a href="http://algs4.cs.princeton.edu/25applications">2.5&nbsp;&nbsp;Sorting Applications</a>
+        </li></ul>
+
+      </li><li> <a href="http://algs4.cs.princeton.edu/30searching">3.&nbsp;&nbsp;Searching</a>
+        <ul>
+          <li> <a href="http://algs4.cs.princeton.edu/31elementary">3.1&nbsp;&nbsp;Symbol Tables</a>
+          </li><li> <a href="http://algs4.cs.princeton.edu/32bst">3.2&nbsp;&nbsp;Binary Search Trees</a>
+          </li><li> <a href="http://algs4.cs.princeton.edu/33balanced">3.3&nbsp;&nbsp;Balanced Search Trees</a>
+          </li><li> <a href="http://algs4.cs.princeton.edu/34hash">3.4&nbsp;&nbsp;Hash Tables</a>
+          </li><li> <a href="http://algs4.cs.princeton.edu/35applications">3.5&nbsp;&nbsp;Searching Applications</a>
+        </li></ul>
+
+      </li><li> <a href="http://algs4.cs.princeton.edu/40graphs">4.&nbsp;&nbsp;Graphs</a>
+        <ul>
+          <li> <a href="http://algs4.cs.princeton.edu/41graph">4.1&nbsp;&nbsp;Undirected Graphs</a>
+          </li><li> <a href="http://algs4.cs.princeton.edu/42digraph">4.2&nbsp;&nbsp;Directed Graphs</a>
+          </li><li> <a href="http://algs4.cs.princeton.edu/43mst">4.3&nbsp;&nbsp;Minimum Spanning Trees</a>
+          </li><li> <a href="http://algs4.cs.princeton.edu/44sp">4.4&nbsp;&nbsp;Shortest Paths</a>
+        </li></ul>
+
+      </li><li> <a href="http://algs4.cs.princeton.edu/50strings">5.&nbsp;&nbsp;Strings</a>
+        <ul>
+          <li> <a href="http://algs4.cs.princeton.edu/51radix">5.1&nbsp;&nbsp;String Sorts</a>
+          </li><li> <a href="http://algs4.cs.princeton.edu/52trie">5.2&nbsp;&nbsp;Tries</a>
+          </li><li> <a href="http://algs4.cs.princeton.edu/53substring">5.3&nbsp;&nbsp;Substring Search</a>
+          </li><li> <a href="http://algs4.cs.princeton.edu/54regexp">5.4&nbsp;&nbsp;Regular Expressions</a>
+          </li><li> <a href="http://algs4.cs.princeton.edu/55compression">5.5&nbsp;&nbsp;Data Compression</a>
+        </li></ul>
+
+      </li><li> <a href="http://algs4.cs.princeton.edu/60context">6.&nbsp;&nbsp;Context</a>
+        <ul>
+          <li> <a href="http://algs4.cs.princeton.edu/61event">6.1&nbsp;&nbsp;Event-Driven Simulation</a>
+          </li><li> <a href="http://algs4.cs.princeton.edu/62btree">6.2&nbsp;&nbsp;B-trees</a>
+          </li><li> <a href="http://algs4.cs.princeton.edu/63suffix">6.3&nbsp;&nbsp;Suffix Arrays</a>
+          </li><li> <a href="http://algs4.cs.princeton.edu/64maxflow">6.4&nbsp;&nbsp;Maxflow</a>
+          </li><li> <a href="http://algs4.cs.princeton.edu/65reductions">6.5&nbsp;&nbsp;Reductions</a>
+          </li><li> <a href="http://algs4.cs.princeton.edu/66intractability">6.6&nbsp;&nbsp;Intractability</a>
+        </li></ul>
+    </li></ul>
+
+
+
+
+</li><li><a class="title"> Related Booksites</a>
+<table width="100%" cellspacing="0" cellpadding="0" border="0">
+<tbody><tr>
+<td align="center">
+<a class="booksite" href="http://introcs.cs.princeton.edu/">
+   <img src="Analysis%20of%20Algorithms_files/cover_002.png" alt="Introduction to Programming in Java
+               by Robert Sedgewick and Kevin Wayne" width="80" height="108" border="0">
+</a>
+</td><td align="center">
+<a class="booksite" href="http://aofa.cs.princeton.edu/">
+   <img src="Analysis%20of%20Algorithms_files/cover-analysis-of-algorithms.png" alt="An Introduction to the Analysis of Algorithms by Robert Sedgewick and Philippe Flajolet" width="81" height="108" border="0">
+</a>
+</td></tr>
+</tbody></table>
+
+</li><li><a class="title">Web Resources</a>
+
+
+      </li><li> <a href="http://algs4.cs.princeton.edu/faq">FAQ</a>
+      </li><li> <a href="http://introcs.cs.princeton.edu/java/data">Data</a>
+      </li><li> <a href="http://algs4.cs.princeton.edu/code">Code</a>
+      </li><li> <a href="http://algs4.cs.princeton.edu/errata">Errata</a>
+      </li><li> <a href="http://algs4.cs.princeton.edu/cheatsheet">Cheatsheet</a>
+      </li><li> <a href="http://algs4.cs.princeton.edu/references">References</a>
+      </li><li> <a href="https://www.coursera.org/course/algs4partI">Online Course</a>
+      </li><li> <a href="http://algs4.cs.princeton.edu/lectures">Lecture Slides</a>
+      </li><li> <a href="http://introcs.cs.princeton.edu/java/assignments">Programming Assignments</a>
+   </li></ul>
+
+
+
+<p><br>
+
+<script>
+  (function() {
+    var cx = '005649317310637734940:s7fqljvxwfs';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//www.google.com/cse/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<div id="___gcse_0"><div class="gsc-control-searchbox-only gsc-control-searchbox-only-en" dir="ltr"><form class="gsc-search-box" accept-charset="utf-8"><table class="gsc-search-box" cellspacing="0" cellpadding="0"><tbody><tr><td class="gsc-input"><input autocomplete="off" size="10" class=" gsc-input" name="search" title="search" id="gsc-i-id1" dir="ltr" spellcheck="false" style="outline: medium none;" type="text"><input name="bgresponse" id="bgresponse" type="hidden"></td><td class="gsc-search-button"><input value="Search" class="gsc-search-button" title="search" type="button"></td><td class="gsc-clear-button"><div class="gsc-clear-button" title="clear results">&nbsp;</div></td></tr></tbody></table><table class="gsc-branding" cellspacing="0" cellpadding="0"><tbody><tr style="display: none;"><td class="gsc-branding-user-defined"></td><td class="gsc-branding-text"><div class="gsc-branding-text">powered by</div></td><td class="gsc-branding-img"><img src="Analysis%20of%20Algorithms_files/googlelogo_grey_46x15dp.png" class="gsc-branding-img" srcset="https://www.google.com/cse/static/images/2x/googlelogo_grey_46x15dp.png 2x"></td></tr></tbody></table></form></div></div>
+
+</p><p><br>
+
+
+
+
+</p></div>
+
+
+<div id="content">
+<h1>1.4 &nbsp; Analysis of Algorithms</h1>
+
+<p><br>
+As people gain experience using computers,
+they use them to solve difficult problems or to process large
+amounts of data and are invariably led to questions like these:
+</p><ul>
+<p></p><li><em>How long will my program take?</em>
+<p></p></li><li><em> Why does my program run out of memory?</em>
+</li></ul>
+
+<p></p><h2>Scientific method.</h2>
+The very same approach that scientists use to understand the natural world 
+is effective for studying the running time of programs:
+<ul>
+<li><em>Observe</em> some feature of the 
+natural world, generally with precise measurements.
+</li><li><em>Hypothesize</em> a model that is consistent with the observations.
+</li><li><em>Predict</em> events using the hypothesis.
+</li><li><em>Verify</em> the predictions by making further observations.
+</li><li><em>Validate</em> by repeating until the hypothesis and observations agree.
+</li></ul>
+The experiments we design must be <em>reproducible</em> and
+the hypotheses that we formulate must be <em>falsifiable</em>.
+
+
+<p></p><h2>Observations.</h2>
+Our first challenge is to determine how to make quantitative measurements of the running 
+time of our programs.
+<a href="http://algs4.cs.princeton.edu/14analysis/Stopwatch.java.html">Stopwatch.java</a> is a data type
+that measures the elapsed running time of a program.
+
+<p>
+</p><center>
+<img src="Analysis%20of%20Algorithms_files/stopwatch-api.png" alt="stopwatch API">
+</center>
+
+
+<a href="http://algs4.cs.princeton.edu/14analysis/ThreeSum.java.html">ThreeSum.java</a> counts the number
+of triples in a file of <em>N</em> integers that sums to 0 (ignoring
+integer overflow).
+<a href="http://algs4.cs.princeton.edu/14analysis/DoublingTest.java.html">DoublingTest.java</a>
+generates a sequence of random input arrays, doubling the
+array size at each step, and prints the running times of
+<tt>ThreeSum.count()</tt> for each input size.
+<a href="http://algs4.cs.princeton.edu/14analysis/DoublingRatio.java.html">DoublingRatio.java</a>
+is similar but also output the ratios in running times from one size to the next.
+
+<p>
+</p><center>
+<img src="Analysis%20of%20Algorithms_files/loglog.png" alt="loglog plot of running time">
+</center>
+
+
+<p></p><h2>Mathematical models.</h2>
+The total running time of a program is determined by two primary factors:
+the cost of executing each statement and 
+the frequency of execution of each statement.
+
+<ul>
+
+<p></p><li><em>Tilde approximations.</em>
+We use tilde approximations, where we throw away
+low-order terms that complicate formulas.
+We write <em>~ f(N)</em> to represent any function that when divided
+by <em>f(N)</em> approaches 1 as <em>N</em> grows.
+We write <em>g(N) ~ f(N)</em> to indicate that 
+<em>g(N) / f(N)</em> approaches 1 as <em>N</em> grows.
+
+<p>
+</p><center>
+<img src="Analysis%20of%20Algorithms_files/tilde.png" alt="tilde approximations">
+</center>
+
+<p></p></li><li><em>Order-of-growth classifications.</em>
+Most often, we work with tilde approximations of the form
+<em>g(N) ~ a f(N)</em> where <em>f(N) = N^b log^c N</em>
+and refer to <em>f(N)</em> as the The <em>order of growth</em> 
+of <em>g(N)</em>.
+We use just a few structural primitives (statements, conditionals, loops,
+nesting, and method calls) to implement algorithms, so very often the 
+order of growth of the cost is one of just a few functions of the problem
+size <em>N</em>.
+
+<p>
+</p><center>
+<img src="Analysis%20of%20Algorithms_files/classifications.png" alt="order-of-growth classifications">
+</center>
+
+
+<p></p></li><li><em>Cost model.</em>
+We focus attention on properties of algorithms by articulating a
+<em>cost model</em> that defines the 
+basic operations.
+For example, an appropriate cost model for the 3-sum problem is the
+number of times we access an array entry, for read or write.
+
+</li></ul>
+
+<p><b>Property.</b>
+The order of growth of the running time of 
+<a href="http://algs4.cs.princeton.edu/14analysis/ThreeSum.java.html">ThreeSum.java</a>
+is N^3.
+
+
+</p><p><b>Proposition.</b>
+The brute-force 3-sum algorithm uses <em>~ N^3 / 2</em> array accesses to
+compute the number of triples that sum to 0 among <em>N</em> numbers.
+
+
+
+</p><p>
+</p><h2>Designing faster algorithms.</h2>
+One of the primary reasons to study the order of growth of a program
+is to help design a faster algorithm to solve the same problem.
+Using mergesort and binary search, we develop faster algorithms for the
+2-sum and 3-sum problems.
+
+<ul>
+<p></p><li><em>2-sum.</em>
+The brute-force solution <a href="http://algs4.cs.princeton.edu/14analysis/TwoSum.java.html">TwoSum.java</a>
+takes time proportional to N^2.
+<a href="http://algs4.cs.princeton.edu/14analysis/TwoSumFast.java.html">TwoSumFast.java</a> solves
+the 2-sum problem in time proportional to N log N time.
+
+<p></p></li><li><em>3-sum.</em>
+<a href="http://algs4.cs.princeton.edu/14analysis/ThreeSumFast.java.html">ThreeSumFast.java</a> solves
+the 3-sum problem in time proportional to N^2 log N time.
+</li></ul>
+
+
+<p></p><h2>Coping with dependence on inputs.</h2>
+For many problems, the running time can vary widely depending on the input.
+
+<ul>
+<p></p><li><em>Input models.</em>
+We can carefully model the kind of input to be processed.
+This approach is challenging because the model may be unrealistic.
+
+<p></p></li><li><em>Worst-case performance guarantees.</em>
+Running time of a program is less than a certain bound
+(as a function of the input size), no matter what the input.
+Such a conservative approach might be appropriate for the
+software that runs a nuclear reactor or a pacemaker or the 
+brakes in your car.
+
+<p></p></li><li><em>Randomized algorithms.</em>
+One way to provide a performance guarantee is to introduce randomness,
+e.g., quicksort and hashing.
+Every time you run the algorithm, it will take a different amount of time.
+These guarantees are not absolute, but the chance that they are invalid
+is less than the chance your computer will be struck by lightning.
+Thus, such guarantees are as useful in practice as worst-case guarantees.
+
+
+<p></p></li><li><em>Amortized analysis.</em>
+For many applications, the algorithm input might be not just data, but
+the sequence of operations performed by the client.
+Amortized analysis provides a worst-case performance guarantee
+on a <em>sequence</em> of operations.
+
+</li></ul>
+
+<p><b>Proposition.</b> In the linked-list implementation of 
+<tt>Bag</tt>, <tt>Stack</tt>, and <tt>Queue</tt>, all operations take 
+constant time in the worst case.
+
+</p><p><b>Proposition.</b> In the resizing-array implementation of
+<tt>Bag</tt>, <tt>Stack</tt>, and <tt>Queue</tt>, starting
+from an empty data structure, any sequence of <em>N</em> operations
+takes time proportional to <em>N</em> in the worst case
+(amortized constant time per operation).
+
+
+</p><p></p><h2><a name="memory"></a>Memory usage.</h2>
+To estimate how much memory our program uses, we can count up
+the number of variables and weight them by the number of bytes
+according to their type. For a <em>typical</em> 64-bit machine,
+
+<ul>
+<li><em>Primitive types.</em>
+the following table gives the memory requirements for
+primitive types.
+
+<p>
+</p><center>
+<img src="Analysis%20of%20Algorithms_files/memory-primitive.png" alt="memory requirements for primitive types">
+</center>
+
+
+
+</li><li><em>Objects.</em>
+To determine the memory usage of an object, we add the amount of
+memory used by each instance variable to the overhead associated
+with each object, typically 16 bytes.
+Moreover, the memory usage is typically padded
+to be a multiple of 8 bytes (on a 64-bit machine). 
+
+<p>
+</p><center>
+<img src="Analysis%20of%20Algorithms_files/Integer-memory.png" alt="memory requirement of Integer">
+
+<img src="Analysis%20of%20Algorithms_files/Date-memory.png" alt="memory requirement of Date">
+</center>
+
+</li><li><em>References.</em>
+A reference to an object typically is a memory address and
+thus uses 8 bytes of memory (on a 64-bit machine).
+
+</li><li><em>Linked lists.</em>
+A nested non-static (inner) class such as our <tt>Node</tt>
+class requires an extra 8 bytes of overhead
+(for a reference to the enclosing instance). 
+
+<p>
+</p><center>
+<img src="Analysis%20of%20Algorithms_files/Node-memory.png" alt="memory requirement of Node">
+</center>
+
+</li><li><em>Arrays.</em>
+Arrays in Java are implemented as objects,
+typically with extra overhead for the length. An
+array of primitive-type values typically requires 24 bytes of header
+information (16 bytes of object overhead, 4 bytes for the length,
+and 4 bytes of padding) plus the memory needed to 
+store the values.
+
+<p>
+</p><center>
+<img src="Analysis%20of%20Algorithms_files/array-memory.png" alt="memory requirement of arrays">
+</center>
+
+</li><li><em>Strings.</em>
+A Java 7 string of length <em>N</em> typically uses 32 bytes
+(for the <tt>String</tt> object) plus 24 + 2<em>N</em> bytes
+(for the array that contains the characters) for a total of 56 + 2<em>N</em> bytes.
+
+<p>
+</p><center>
+<img src="Analysis%20of%20Algorithms_files/String-memory.png" alt="memory requirement of String">
+</center>
+
+</li></ul>
+
+
+Depending on context, we may or may not count the memory references by an object (recursively).
+For example, we count the memory for the <tt>char[]</tt> array in the memory for a 
+<tt>String</tt> object because this memory is allocated when the string is created.
+But, we would not ordinarily count the memory for the <tt>String</tt> objects in a
+<tt>StackOfStrings</tt> object because the <tt>String</tt> objects are created 
+by the client.
+
+
+
+<br><br>
+
+<p>
+</p><h4>Q + A</h4>
+
+<p><b>Q.</b>
+How do I increase the amount of memory and stack space that Java allocates?
+</p><p><b>A.</b>
+You can increase the amount of memory allotted to Java by executing with
+<tt>java -Xmx200m Hello</tt> where 200m means
+200 megabytes. The default setting is typically 64MB.
+You can increase the amount of stack space allotted to Java by
+executing with <tt>java -Xss200k Hello</tt> where 200k
+means 200 kilobytes. The default setting is typically 128KB.
+It's possible to increase both the amount of memory and stack space
+by executing with <tt>java -Xmx200m -Xss200k Hello</tt>.
+
+</p><p><b>Q.</b>
+What is the purpose of padding?
+</p><p><b>A.</b>
+Padding makes all objects take space that is a mulitple of 8 bytes.
+This can waste some memory but it speeds up memory access and garbage collection.
+
+</p><p><b>Q.</b>
+I get inconsistent timing information in my computational experiments. Any advice?
+</p><p><b>A.</b>
+Be sure that you computation is consuming enough CPU cycles so that you can measure it
+accurately. Generally, 1 second to 1 minute is reasonable.
+If you are using huge amounts of memory, that could be the bottleneck.
+Consider turning off the HotSpot compiler, using <tt>java -Xint</tt>,
+to ensure a more uniform testing environment.
+The downside is that you are no long measuring exactly what you want to measure, i.e.,
+actual running time.
+
+
+
+</p><p><b>Q.</b>
+Does the linked-list implementation of a stack or queue really guarantee constant
+time per operation if we take into account garbage collection and other runtime
+processes?
+
+</p><p><b>A.</b>
+Our analysis does not account for many system effects
+(such as caching, garbage collection, and just-in-time compilation)—in practice,
+such effects are important. In particular, the
+default Java garbage collector achieves only a constant amortized time per operation guarantee.
+However, there are <em>real-time</em> garbage collectors that guarantee 
+constant time per operation in the worst case.
+<a href="http://en.wikipedia.org/wiki/Real_time_Java">Real time Java</a>
+provides extensions to Java that provide worst-case performance guarantees
+for various runtime processes (such as garbage collection, class loading,
+Just-in-time compilation, and thread scheduling).
+
+</p><p>
+</p><h4>Exercises</h4>
+<ol>
+
+
+<a name="Ex1.4.6"></a>
+<li value="6"> 
+Give the order of growth (as a function of <em>N</em>) of the running times
+of each of the following code fragments:
+
+<ol>
+<p></p><li>
+<blockquote>
+<table>
+<tbody><tr><td><pre>int sum = 0;
+for (int n = N; n &gt; 0; n /= 2)
+   for (int i = 0; i &lt; n; i++) 
+      sum++;
+</pre></td></tr>
+</tbody></table>
+</blockquote>
+
+</li><li>
+<blockquote>
+<table>
+<tbody><tr><td><pre>int sum = 0;
+for (int i = 1; i &lt; N; i *= 2)
+   for(int j = 0; j &lt; i; j++)
+      sum++;
+</pre></td></tr>
+</tbody></table>
+</blockquote>
+
+</li><li>
+<blockquote>
+<table>
+<tbody><tr><td><pre>int sum = 0;
+for (int i = 1; i &lt; N; i *= 2)
+   for (int j = 0; j &lt; N; j++)
+      sum++;
+</pre></td></tr>
+</tbody></table>
+</blockquote>
+
+</li></ol>
+<em>Answer</em>: linear (N + N/2 + N/4 + ...);
+linear (1 + 2 + 4 + 8 + ...);
+linearithmic (the outer loop loops lg N times).
+
+</li></ol>
+
+<p>
+</p><h4>Creative Problems</h4>
+<ol>
+
+<a name="Ex1.4.14"></a>
+<li value="14"><b>4-sum.</b>
+Develop a brute-force solution <a href="http://algs4.cs.princeton.edu/14analysis/FourSum.java.html">FourSum.java</a>
+to the 4-sum problem.
+
+<a name="Ex1.4.18"></a>
+</li><li value="18"><b>Local minimum of an array.</b>
+Write a program that, given an array <tt>a[]</tt> of <em>N</em>
+distinct integers, finds a <em>local minimum</em>: an index <tt>i</tt>
+such that both<tt>a[i] &lt; a[i-1]</tt> and <tt>a[i] &lt; a[i+1]</tt> (assuming the neighboring
+entry is in bounds).
+Your program should use <em>~2 lg N</em> compares in the worst case.
+
+<p><em>Answer</em>:
+Examine the middle value  <tt>a[N/2]</tt> and its two neighbors
+<tt>a[N/2 - 1]</tt> and <tt>a[N/2 + 1]</tt>.
+If <tt>a[N/2]</tt> is a local minimum, stop; otherwise search in the half
+with the smaller neighbor.
+
+<a name="Ex1.4.19"></a>
+</p></li><li value="19"><b>Local minimum of a matrix.</b>
+Given an <em>N</em>-by-<em>N</em> array <tt>a[]</tt> of <em>N</em><sup>2</sup>
+distinct integers, design an algorithm that runs in time proportional to
+<em>N</em> to find a <em>local minimum</em>:
+an pair of indices <tt>i</tt> and <tt>j</tt> such that 
+<tt>a[i][j] &lt; a[i+1][j]</tt>,
+<tt>a[i][j] &lt; a[i][j+1]</tt>,
+<tt>a[i][j] &lt; a[i-1][j]</tt>, and
+<tt>a[i][j] &lt; a[i][j-1]</tt> (assuming the neighboring entry is in bounds).
+
+<p><em>Hint</em>: 
+Find the minimum entry in row <tt>N/2</tt>, say <tt>a[N/2][j]</tt>.
+Check its two vertical neighbors <tt>a[N/2-1][j]</tt> and <tt>a[N/2+1][j]</tt>. Recur
+in the half with the smaller neighbor.
+In that half, find the minimum entry in column <tt>N/2</tt>.
+
+
+<a name="Ex1.4.20"></a>
+</p></li><li value="20"><b>Bitonic search.</b>
+An array is <em>bitonic</em> if it is comprised of an increasing
+sequence of integers followed immediately by a decreasing sequence of integers.
+Write a program that, given a bitonic array of <em>N</em>
+distinct <tt>int</tt> values, determines whether a given integer is
+in the array.
+Your program should use <em>~ 3 lg N</em> compares in the worst case.
+
+<p><em>Answer</em>:
+Use a version of binary search, as in <a href="http://algs4.cs.princeton.edu/14analysis/BitonicMax.java.html">BitonicMax.java</a>,
+to find the maximum (in <em>~ 1 lg N</em> compares);
+then use binary search to search in each piece (in <em>~ 1 lg N</em> compares
+per piece).
+
+
+</p></li><li value="22"><b>Binary search with only addition and subtraction.</b>
+[<a href="http://people.csail.mit.edu/mip/probs.html">Mihai Patrascu</a>]
+
+Write a program that, given an array of <em>N</em> distinct
+<tt>int</tt> values in ascending order, determines 
+whether a given integer is in the array.
+You may use only additions and subtractions and a 
+constant amount of extra memory.
+The running time of your program should be proportional to 
+log <em>N</em> in the worst case.
+
+<p><em>Answer</em>:
+Instead of searching based on powers of two (binary search),
+use Fibonacci numbers (which also grow exponentially).
+Maintain the current search range to be [i, i + F(k)] and 
+keep F(k), F(k-1) in two variables. At each step
+compute F(k-2) via subtraction, check element i + F(k-2),
+and update the range to either
+[i, i + F(k-2)] or [i + F(k-2), i + F(k-2) + F(k-1)].
+
+
+<a name="Ex1.4.23"></a>
+</p></li><li value="23"><b>Binary search with duplicates.</b>
+Modify binary search so that it always returns the smallest (largest)
+index of a key of an item matching the search key.
+
+<!--
+<a name = "Ex1.4.23"></a>
+<li value = 23><b>Binary search for a fraction.</b>
+Devise a method that uses a logarithmic number of queries of the
+form <em>Is the number less than x?</em> to find a rational
+number <em>p / q</em> such that 0 < <em>p</em> < <em>q</em> < <em>N</em>.
+
+<p><em>Hint</em>:
+Two fractions with denominator less than <em>N</em> cannot differ by
+more than than 1/<em>N</em>^2.
+-->
+
+<a name="Ex1.4.24"></a>
+</li><li value="24"><b>Throwing eggs from a building.</b>
+Suppose that you have an <em>N</em>-story building and plenty of eggs.
+Suppose also that an egg is broken if it is thrown off floor <em>F</em>
+or higher, and unbroken otherwise. First, devise a strategy to determine
+the value of <em>F</em> such that the number of broken eggs is 
+<em>~ lg N</em> when using <em>~ lg N</em> throws, then find a way to
+reduce the cost to <em>~ 2 lg F</em> when <em>N</em> is much larger
+than <em>F</em>.
+
+<p><em>Hint</em>: binary search; repeated doubling and binary search.
+
+<a name="Ex1.4.25"></a>
+</p></li><li value="25"><b>Throwing two eggs from a building.</b>
+Consider the previous question, but now suppose you only have two eggs,
+and your cost model is the number of throws. Devise a strategy to
+determine <em>F</em> such that the number of throws is at most
+2 sqrt(√ <em>N</em>), then find a way to reduce the cost to
+<em>~c √ F</em> for some constant c.
+
+<p><em>Solution to Part 1</em>:
+To achieve 2 * sqrt(N),
+drop eggs at floors sqrt(N), 2 * sqrt(N), 3 * sqrt(N), ..., sqrt(N) * sqrt(N).
+(For simplicity, we assume here that sqrt(N) is an integer.)
+Let assume that the egg broke at level k * sqrt(N).
+With the second egg you should then perform a linear search 
+in the interval (k-1) * sqrt(N) to k * sqrt(N). In total you will be 
+able to find the floor F in at most 2 * sqrt(N) trials.
+
+</p><p><em>Hint for Part 2</em>: 1 + 2 + 3 + ... k ~ 1/2 k^2.
+
+
+<a name="Ex1.4.34"></a>
+</p></li><li value="34"><b>Hot or cold.</b>
+Your goal is the guess a secret integer between 1 and <em>N</em>.
+You repeatedly guess integers between 1 and <em>N</em>.
+After each guess you learn if it equals the secret integer (and the game
+stops); otherwise (starting with the second guess), you learn if the guess is
+<em>hotter</em> (closer to) or <em>colder</em> (farther from)
+the secret number than your previous guess.
+Design an algorithm that finds the secret number in
+<em>~ 2 lg N</em> guesses. Then, design an algorithm that finds
+the secret number in <em>~ 1 lg N</em> guesses.
+
+<p><em>Hint</em>: use binary search for the first part.
+For the second part, first design an algorithm that solves the problem
+in <em>~1 lg N</em> guesses assuming you are permitted to guess integers
+in the range -<em>N</em> to 2<em>N</em>. 
+
+<!-- 
+If you know the secret number is in the interval [l, u] then can
+solve in ~ lg(u-l) guesses in the interval [l - (u-l), u + (u-l)]
+by starting with l and u and then guessing the
+smallest number outside of the [l, u] interval to cut
+the remaining interval in half.
+
+To reduce the problem to one of this form, assume wlog 
+that the integer is in [1, N/2]. Then repeatedly make guesses
+N/2, 1, N/8, 1, N/32, 1, N/128, 1, ... and so forth until the secret number
+is in the upper interval.
+-->
+
+
+</p></li></ol>
+
+
+<p>
+</p><h4>Web Exercises</h4>
+<ol>
+
+<li>
+Let f be a monotonically increasing function with f(0) &lt; 0
+and f(N) &gt; 0. Find the smallest integer i such that f(i) &gt; 0.
+Devise an algorithm that makes O(log N) calls to f().
+
+
+
+</li><li><b>Floor and ceiling.</b>
+Given a set of comparable elements, the <em>ceiling</em>
+of x is the smallest element in the set greater than or equal to
+x, and the <em>floor</em> is the largest element less than or   
+equal to x. Suppose you have an array of N items in ascending
+order. Give an O(log N) algorithm to find the floor and ceiling 
+of x.
+
+</li><li><b>Rank with lg N two-way compares.</b>
+Implement <tt>rank()</tt> so that it uses ~ 1 lg N two-way compares
+(instead of ~ 1 lg N 3-way compares).
+
+</li><li><b>Identity.</b>
+Given an array <tt>a</tt> of N distinct integers
+(positive or negative) in ascending order.
+Devise an algorithm to find an index <tt>i</tt> such that
+<tt>a[i] = i</tt> if such an index exists.
+Hint: binary search.
+
+</li><li><b>Majority.</b>
+Given an array of N strings. An element is a  <em>majority</em>
+if it appears more than N/2 times. Devise an algorithm to identify
+the majority if it exists. Your algorithm should run in
+linearithmic time.
+
+</li><li><b>Majority.</b>
+Repeat the previous exercise, but this time your algorithm should
+run in linear time, and only use a constant amount of extra space.
+Moreover, you may only compare elements for equality, not for
+lexicographic order.
+
+<p><em>Answer</em>: if a and b are two elements and
+a != b, then remove both of them; majority still remains.
+Use N-1 compares to find candidate for majority; use  
+N-1 comparisons to check if candidate really is a majority.
+<!--
+[Could solve with linear time median finding, but this is  
+much simpler.]
+-->
+
+</p></li><li><b>Second smallest.</b>
+Give an algorithm to find the smallest and second smallest elements
+from a list of N items using the minimum number of comparisons.
+
+<em>Answer</em>: you can do it in 
+ceil(N + lg(N) - 2) comparisons by building a tournament tree
+where each parent is the minimum of its two children. The minimum
+ends up at the root; the second minimum is on the path from the
+root to the minimum.
+
+
+
+</li><li><b>Find a duplicate.</b>
+Given an array of N elements in which each element is an integer
+between 1 and N,
+write an algorithm to determine if there are any duplicates.
+Your algorithm should run in linear time and use O(1) extra
+space.
+<em>Hint</em>: you may destroy the array.
+
+</li><li><b>Find a duplicate.</b>
+Given an array of N+1 elements in which each element is an
+integer between 1 and N,
+write an algorithm to find a duplicate.
+Your algorithm should run in linear time, use O(1) extra space,
+and may not modify the original array.
+<em>Hint</em>: pointer doubling.
+
+
+</li><li><b>Finding common elements.</b>
+Given two arrays of N 64-bit integers, design an algorithm to print out
+all elements that appear in both lists. The output should be in sorted order.
+Your algorithm should run in N log N.
+<em>Hint</em>: mergesort, mergesort, merge.
+<em>Remark</em>: not possible to do better than N log N in comparison based model.
+
+</li><li><b>Finding common elements.</b>
+Repeat the above exercise but assume the first array has M integers and the
+second has N integers where M is much less than N. Give an algorithm
+that runs in N log M time.
+<em>Hint</em>: sort and binary search.
+
+
+</li><li><b>Anagrams.</b>
+Design a O(N log N) algorithm to read in a list of words
+and print out all anagrams. For example, the
+strings "comedian" and "demoniac" are anagrams of each other.
+Assume there are N words and each word contains at most 20 letters.
+Designing a O(N^2) algorithms should not be too difficult, but
+getting it down to O(N log N) requires some cleverness.
+
+
+
+</li><li><b>Search in a sorted, rotated list.</b>
+Given a sorted list of N distinct integers that has been rotated an unknown
+number of positions, e.g., 15 36 1 7 12 13 14, write a program
+<a href="http://algs4.cs.princeton.edu/14analysis/RotatedSortedArray.java.html">RotatedSortedArray.java</a>
+to determine if a given integer is in the list. The order of growth
+of the running time of your algorithm should be log N.
+
+
+</li><li><b>Find the missing integer.</b>
+An array <tt>a[]</tt> contains all of the integers from 
+0 to N, except 1. However, you cannot access an element 
+with a single operation. Instead, you can call
+<tt>get(i, k)</tt> which returns the kth bit of <tt>a[i]</tt>
+or you can call <tt>swap(i, j)</tt> which swaps  the
+ith and jth elements of <tt>a[]</tt>.
+Design an O(N) algorithm to find the missing integer.
+For simplicity, assume N is a power of 2.
+
+</li><li><b>Longest row of 0s.</b>
+Given an N-by-N matrix of 0s and 1s such that in each
+row no 0 comes before a 1, find the row with the most 0s
+in O(N) time.
+
+</li><li><b>Monotone 2d array.</b>
+Give an n-by-n array of elements such that each row is in
+ascending order and each column is in ascending order,  
+devise an O(n) algorithm to determine if a given element x
+in the array. You may assume all elements in the n-by-n array
+are distinct.
+<!-- can't do better than n since the off diagonal can contain
+elements in arbitrary order, so algorithm must examine all
+of them -->
+
+
+
+</li><li> 
+You are in the middle of a road, but there is a duststorm
+obscuring your view and orientation. There is a shelter in
+only one direction, but you cannot see anything until you
+are right in front of it. Devise an algorithm that
+is guaranteed to find the shelter. Your goal is to minimize the amount
+you have to walk.
+<em>Hint</em>: some kind of doubling back-and-forth strategy.
+
+
+</li><li> Improve the following code fragment by as big a constant
+factor as you can for large n. Profile it to determine where
+is the bottleneck. Assume <tt>b[]</tt> in an integer array of 
+length <tt>n</tt>.
+
+<blockquote>
+<table>
+<tbody><tr><td><pre>double[] a = new double[n];
+for (int i = 0; i &lt; n; i++)
+   for (int j = 0; j &lt; n; j++)
+       a[j] += Math.exp(-0.5 * (Math.pow(b[i] - b[j], 2)); 
+</pre></td></tr>
+</tbody></table>
+</blockquote>
+
+</li><li><b>In-place permutation.</b>   
+Write a program <tt>Permutation.java</tt>
+that includes functions that take an array and a permutation
+(or inverse permutation) and rearranges the elements in the
+array according to the permutation (or inverse permutation).
+Do it <em>in-place</em>: use only a constant amount of
+extra memory.
+
+
+</li><li><b>Sum of three.</b>   
+Given three sets A, B, and C of at most N integers each, determine
+whether there exists a triple a in A, b in B, and c in C such that a + b + c = 0.
+<p><em>Answer</em>:
+Sort B in increasing order; sort C in decreasing order; for each a in A,
+scan B and C for a pair that sums to -a (when the sum is too small, advance
+in B, when the sum is too large, advance in C).
+
+</p></li><li><b>SumOfTwo.</b>
+Given two sets A and B of at most N integers each, determine whether
+the sum of any two distinct integers in A equals an integer in B.
+
+
+</li><li><b>Contiguous sum.</b>
+Given a list of real numbers and a target value V, find a contiguous 
+block (of any length) whose sum is as close to V as possible.
+
+<p><em>Brute force</em>: compute the sum of each contiguous block
+by brute force. This takes O(N^3) time.
+
+</p><p><em>Partial sums</em>: compute all partial sums s[i] = a[0] + a[1] + ... + a[i]
+so that contiguous blocks have a sum of the form s[j] - s[i].
+This takes O(N^2) time.
+
+</p><p><em>Sort and binary search</em>: form the partial sums as above and then
+sort them in ascending order. For each i, binary search for the s[j] that
+is as close to s[i] as possible.
+This takes O(N log N) time.
+
+   
+</p></li><li><b>Linear equation with 3 variables.</b>
+For some fixed linear equation in 3 variables (say with integer
+coefficients), given N numbers,
+do any 3 of them satisfy the equation?
+Design a quadratic algorithm for the problem. <em>Hint</em>: see
+quadratic algorithm for 3-sum.
+
+</li><li><b>Convolution 3-sum.</b>
+Given N real numbers, determine whether there exists indices i and j
+such that a[i] + a[j] = a[i+j].
+Design a quadratic algorithm for the problem. <em>Hint</em>: see
+quadratic algorithm for 3-sum.
+
+
+</li><li><b>Find a majority item.</b>
+Given a arbitrarily long sequence of items from standard input
+such that one item appears a strict majority of the time, identify
+the majority item. Use only a constant amount of memory.
+
+<p><em>Solution.</em> Maintain one integer counter and one variable to store 
+the current champion item. Read in the next item and (i) if the item equals the champion
+item, increment the counter by one. (ii) else decrement the counter by one
+and if the counter reaches 0 replace the champion value with the current item.
+Upon termination, the champion value will be the majority item.
+
+</p></li><li><b>Memory of arrays.</b>
+<a href="http://algs4.cs.princeton.edu/14analysis/MemoryOfArrays.java.html">MemoryOfArrays.java</a>.
+Relies on <a href="http://algs4.cs.princeton.edu/14analysis/LinearRegression.java.html">LinearRegression.java</a>.
+
+</li><li><b>Memory of strings and substrings.</b>
+<a href="http://algs4.cs.princeton.edu/14analysis/MemoryOfStrings.java.html">MemoryOfStrings.java</a>.
+Relies on <a href="http://algs4.cs.princeton.edu/14analysis/LinearRegression.java.html">LinearRegression.java</a>
+and 
+<a href="http://algs4.cs.princeton.edu/14analysis/PolynomialRegression.java.html">PolynomialRegression.java</a>.
+Depends on whether you are using Java 6 or Java 7.
+
+<p></p></li><li><b>Memory of a stack and queue.</b>
+What is the memory usage of a stack of N items as a function of N?
+
+<p><em>Solution.</em>
+32 + 40N (not including memory for referenced objects).
+<a href="http://algs4.cs.princeton.edu/13stacks/MemoryOfStacks.java.html">MemoryOfStacks.java</a>.
+
+
+</p></li><li><b>Analysis of Euclid's algorithm.</b>
+Prove that Euclid's algorithm takes at most time proportional to <em>N</em>,
+where <em>N</em> is the number of bits in the larger input.
+
+<p><em>Answer</em>:
+First we assume that p &gt; q.
+If not, then the first recursive call effectively swaps p and q.
+Now, we argue that p decreases by a factor of 2 after at most 2 recursive
+calls. To see this, there are two cases to consider.
+If q ≤ p / 2, then the next recursive call will have p' = q ≤ p / 2
+so p decreases by at least a factor of 2 after only one recursive call.
+Otherwise, if p / 2 &lt; q &lt; p, then  q' = p % q = p - q &lt; p / 2
+so p'' = q' &lt; p / 2 and p will decrease by a factor of 2 or more
+after two iterations.
+Thus if p has N bits, then after at most 2N recursive calls, Euclid's
+algorithm will reach the base case. Therefore, the total number of 
+steps is proportional to N.
+
+</p></li><li><b>Find the duplicate.</b>
+Given a sorted array of N+2 integers between 0 and N with exactly one duplicate,
+design a logarithmic time algorithm to find the duplicate.
+<p><em>Hint</em> binary search.
+
+</p></li><li>
+Given an array <tt>a[]</tt> of N real numbers, design a linear-time algorithm
+to find the maximum value of <tt>a[j] - a[i]</tt> where <tt>j</tt> ≥ <tt>i</tt>.
+
+<p><em>Solution</em>:
+
+</p><blockquote>
+<table>
+<tbody><tr><td><pre>double best = 0.0;
+double min = a[0];
+for (int i = 0; i &lt; N; i++) {
+    min  = Math.min(a[i], min);
+    best = Math.max(a[i] - min, best);
+}
+</pre></td></tr>
+</tbody></table>
+</blockquote>
+
+</li></ol>
+
+
+
+
+<br><br>
+<p class="footer">
+<em>Last modified on November 18, 2016.</em><br><br>
+Copyright © 2000–2016
+<a href="http://www.cs.princeton.edu/%7Ers" class="footer">Robert Sedgewick</a>
+and
+<a href="http://www.cs.princeton.edu/%7Ewayne" class="footer">Kevin Wayne</a>.
+All rights reserved.
+</p></div>
+
+
+
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script src="Analysis%20of%20Algorithms_files/ga.js" type="text/javascript"></script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-10811519-2");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+
+
+
+
+ 
+<table style="width: 159px; display: none; top: 871px; left: 23px; position: absolute;" class="gstl_50 gssb_c" cellspacing="0" cellpadding="0"><tbody><tr><td class="gssb_f"></td><td class="gssb_e" style="width: 100%;"></td></tr></tbody></table></body></html>

@@ -1,0 +1,74 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             FirstProgram, CODE, READONLY
+    2 00000000                 IMPORT           main
+    3 00000000                 EXPORT           start
+    4 00000000         
+    5 00000000         start
+    6 00000000 E3A00433        LDR              r0, =0x33000000
+    7 00000004 E59F1004        ldr              r1, =0xB1000001
+    8 00000008 E0502001        subs             r2, r0, r1
+    9 0000000C         ; your program goes here
+   10 0000000C         
+   11 0000000C EAFFFFFE 
+                       stop    B                stop
+   12 00000010         
+   13 00000010                 END
+              B1000001 
+Command Line: --debug --xref --apcs=interwork --depend=.\firstprogram.d -o.\fir
+stprogram.o -ID:\Keil\ARM\RV31\INC -ID:\Keil\ARM\CMSIS\Include -ID:\Keil\ARM\In
+c\Philips --predefine="__EVAL SETA 1" --predefine="__MICROLIB SETA 1" --predefi
+ne="NO_CLOCK_SETUP SETA 1" --predefine="NO_EMC_SETUP SETA 1" --predefine="RAM_I
+NTVEC SETA 1" --predefine="RAM_MODE SETA 1" --predefine="REMAP SETA 1" --list=.
+\firstprogram.lst FirstProgram.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+FirstProgram 00000000
+
+Symbol: FirstProgram
+   Definitions
+      At line 1 in file FirstProgram.s
+   Uses
+      None
+Comment: FirstProgram unused
+start 00000000
+
+Symbol: start
+   Definitions
+      At line 5 in file FirstProgram.s
+   Uses
+      At line 3 in file FirstProgram.s
+Comment: start used once
+stop 0000000C
+
+Symbol: stop
+   Definitions
+      At line 11 in file FirstProgram.s
+   Uses
+      At line 11 in file FirstProgram.s
+Comment: stop used once
+3 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+External symbols
+
+main 00000000
+
+Symbol: main
+   Definitions
+      At line 2 in file FirstProgram.s
+   Uses
+      None
+Comment: main unused
+1 symbol
+343 symbols in table

@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html">
+  <title>Overview of CS2014 systems programming</title>
+</head>
+
+<body bgcolor="#fffedc">
+<h1>Overview of CS2014 systems programming</h1>
+
+<p>This is the 2017 version. Last updated 20171015 by <a href="mailto:stephen.farrell@cs.tcd.ie">stephen.farrell@cs.tcd.ie</a></p> 
+<ul>
+  <li>The canonical URL for this stuff is: <a
+    href="https://down.dsg.cs.tcd.ie/cs2014/">https://down.dsg.cs.tcd.ie/cs2014/</a>
+  <ul><li>I use github for source control so the latest source will be at 
+	<a href="https://github.com/sftcd/cs2014">https://github.com/sftcd/cs2014</a>. Feel free
+	to submit a PR if interested.</li>
+	<li>I <strong>strongly</strong> recommend you clone a copy of that repo. Figuring out how do that is an exercise for
+ 		your first lab.</li>
+    </ul></li>
+
+  <li>The <a href="#Lecture">Lecture slides</a> section below has links to ppt
+    versions of all the lectures for the course. </li>
+  <li>The <a href="materials/README.html">Materials</a> page has links to local and/or remote copies of
+    some of the background information/papers etc. For exam purposes, you won't
+    need all of these, just what's discussed in class,  but you may be interested.</li>
+  <li>The <a href="examples/README.html">Examples directory</a> contains a bunch of
+    samples we'll use in class.</a>
+
+
+  <li>There will be six <a href="#labs">assignments</a>, totalling 20% of the marks for the module
+    (so the exam is worth 80%). The deadlines for the assignments are hard deadlines, missing them
+	means losing significant marks. 
+  	<ul>
+		<li> You have to pass the assignments and exam separately, that is, you need to get above 40% in both.</li>
+	</ul></li>
+	<li>Note that I may be changing the slides/materials as I go. Depending on stuff
+that's more than two weeks ahead of time may be wasted effort:-)</li>
+
+		<li>The Teaching Assistant for this course is <a
+href="mailto:cabrerac@scss.tcd.ie">Christian Cabrera</a>, please send him
+questions related to assignments/labs. For other questions feel free to send me
+<a href="mailto:stephen.farrell@cs.tcd.ie">email</a>
+.</li>
+
+	<li>Plagiarism note: it is enirely ok to talk to other students about the assignments and coding issues, and
+you are encouraged to do that and to help one another. It is not ok to copy someone else's code, nor to write
+code for someone else. We have tools to check. And if in doubt, we will require students to explain their
+submitted code face-to-face. We will randomly select some students/assignments for such checking and request 
+attendance at labs for that purpose from time to time.</li>
+
+  <li>This course was previously taught by <a href="https://www.scss.tcd.ie/David.Gregg/">David Gregg</a>, his 
+	course materials are <a href="https://www.scss.tcd.ie/David.Gregg/cs2014/">here</a>, are still relevant,
+	and should provide a useful 2nd view to the more-or-less the same material.
+  	<ul> 
+		<li>You can look some of David's old exams from
+	<a href="https://www.tcd.ie/academicregistry/exams/assets/local/past-papers2016/CS/CS2014-2.PDF">2016</a>
+	and
+	<a href="https://www.tcd.ie/academicregistry/exams/assets/local/past-papers2015/CS/CS2014-2.PDF">2015</a>.
+	This year's exam will be similar, though I'm thinking of adding some multple-choice questions instead of all essay-style - I'll let you know.
+	</li>
+		</ul></li>
+</ul>
+
+<h2>Lecture Slides</h2>
+
+<ol>
+  <li>General introduction (<a href="lectures/intro.ppt">ppt</a>,<a href="lectures/intro.pdf">pdf</a>)
+		<ul><li><a href="examples/bm/README.html">Broken Malloc Example</a></li></ul>
+  </li>
+  <li>C programming (<a href="lectures/c-programming.ppt">ppt</a>,<a href="lectures/c-programming.pdf">pdf</a>)
+		<ul><li><a href="examples/c-progs-1/README.html">C Examples#1</a></li></ul>
+  </li>
+  <li>Operating Systems (<a href="lectures/os-stuff.ppt">ppt</a>,<a href="lectures/os-stuff.pdf">pdf</a>)
+		<ul><li><a href="examples/shell/README.html">Shell Example</a></li></ul>
+  </li>
+  <li>A bit of crypto code a.k.a. <a href="assignments/assignment2/README.html">assignment#2</a>)</li>
+  <li>More C programming 
+		<ul><li><a href="examples/c-progs-2/README.html">C Examples#2</a></li></ul>
+  </li>
+  <li>Moar of the old crypto stuff <a href="assignments/assignment3/README.html">assignment#3</a>)</li>
+  <li>Debugging: 
+			- (Hoping for a positive response allow permission to use these, in which case...)
+		Thanks to caltech for permission to use these:
+		<ul>
+
+			<li><a href="http://courses.cms.caltech.edu/cs24/Debugging-1.pdf">Debugging#1</a></li>
+			<li><a href="http://courses.cms.caltech.edu/cs24/Debugging-2.pdf">Debugging#2</a></li>
+		</ul>
+ </li>
+  <li>Structures(<a href="lectures/structures.ppt">ppt</a>,<a href="lectures/structures.pdf">pdf</a>)
+		<ul><li><a href="examples/c-progs-3/README.html">C Examples#3</a></li></ul>
+	</li>
+ <li>Our first real example: <a href="examples/tree/README.html">tree</a></li>
+ <li>Some content based on <a href="https://matt.sh/howto-c">this</a> link I got from Lars Eggert (thanks Lars!)
+   </li>
+</ol>
+
+<h2><a neme="labs">Labs and Assignments</a></h2>
+
+<p>Labs will be in LG12, on Thursdays from noon-4pm. Some subset of the teaching assistant,
+myself and
+the two demonstrators will be in LG12 during that period, so please do come along if
+you need help or have questions about the lectures or assignments. 
+As the room isn't 
+big enough, when attending labs, please adhere to the 
+following groupings:</p>
+
+<ul>
+    <li>Group 1: 12.00-12.50: Students whose surname begins with a letter between "P" and "Z".</li>
+    <li>Group 2: 13.00-13.50: Students whose surname begins with a letter between "K" and "O"</li>
+    <li>Group 3: 14.00-14.50: Students whose surname begins with a letter between "D" and "J"</li>
+    <li>Group 4: 15.00-15.50: Students whose surname has a prefix between "A" and "C" </li>
+</ul>
+
+<p>We strongly encourage you to get to the first lab, to ensure you
+have sorted out logins etc. and are basically familiar with the tools.
+If you don't, you will likely regret that. (There is no assignment
+for the first lab.) After that, you can do the assignments by yourself
+or in the labs as you choose.</p>
+
+<p>Submission of assignments will be via the TBD system.</p>
+
+<p>Details of the <a href="./assignments/README.html">assignments</a> will be published as we get to them, at
+which point links will appear below. General instructions <a href="assignments/README.html">here</a>.</p>
+
+<ol>
+<li><a href="https://down.dsg.cs.tcd.ie/cs2014/assignments/assignment0/README.html">Assignment0</a>: no deadline</li>
+<li><a href="https://down.dsg.cs.tcd.ie/cs2014/assignments/assignment1/README.html">Assignment1</a>: deadline 2017-10-09</li>
+<li><a href="https://down.dsg.cs.tcd.ie/cs2014/assignments/assignment2/README.html">Assignment2</a>: deadline 2017-10-16</li>
+<li><a href="https://down.dsg.cs.tcd.ie/cs2014/assignments/assignment3/README.html">Assignment3</a>: deadline 2017-10-30</li>
+<li>Assignment4: deadline 2017-11-13</li>
+<li>Assignment5: deadline 2017-12-04</li>
+<li>Assignment6: deadline 2017-12-15</li>
+</ol>
+
+</body>
+</html>
+
