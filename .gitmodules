@@ -1,0 +1,15 @@
+[submodule "threadscope_Eventlog"]
+	path = threadscope_Eventlog
+	url = https://github.com/RyanBeerBarron/threadscope_Eventlog
+[submodule "CS_first_year"]
+	path = CS_first_year
+	url = https://github.com/RyanBeerBarron/CS_first_year
+[submodule "CS_second_year"]
+	path = CS_second_year
+	url = https://github.com/RyanBeerBarron/CS_second_year
+[submodule "Kaggle_ml"]
+	path = Kaggle_ml
+	url = https://github.com/RyanBeerBarron/Kaggle_ml
+[submodule "CS_Fourth_Year"]
+	path = CS_Fourth_Year
+	url = https://github.com/RyanBeerBarron/CS_Fourth_Year
