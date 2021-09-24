@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!-- development version, includes helpful console warnings -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
+<meta charset="UTF-8">=
+<h1>OpenWeatherAPI</h1>
+<div id="app">
+    Enter the city you wish to see the forecast for
+<br>
+<input type="text" v-model="message" placeholder="city forecast">
+<button v-on:click="go">Go!</button>
+<br>
+{{rainResponse}}
+<br>
+{{tempResponse}}
+<br><br>
+
+<table id="firstTable" style="font-family: 'Open Sans', sans-serif;  width: 750px; border-collapse: collapse; border: 3px solid #44475C; margin: 10px 10px 0 10px;">
+        <thead>
+          <tr>
+            <th>Day</th>  
+            <th>Average Temperature (In celsius)</th>
+            <th>Average wind speed (In meter / sec) </th>
+            <th>Average rain fall (In mm)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="item in items">
+            <td>{{item.day}}</td>
+            <td>{{item.avgTemp}}</td>
+            <td>{{item.avgWindSpeed}}</td>
+            <td>{{item.avgRainFall}}</td>
+          </tr>
+        </tbody>
+</table>  
+</div>
+<script>
+var app = new Vue({
+  el: '#app',
+  data: {
+    message: 'Hello Vue!',
+    rainResponse:"",
+    tempResponse:"",
+    items:[]
+    },
+    methods: {
+        go: function () {
+            city = this.message
+            console.log("Test: " + city)
+            let url = "http://localhost:3000/weather/" + city
+            this.$http.get(url).then(res => {
+                this.response = JSON.parse(res.bodyText)
+                if (this.response.rain == true) {
+                    this.rainResponse = "It is going to be rainy, you should bring an umbrella"
+                }
+                else {
+                    this.rainResponse = ''
+                }
+                if (this.response.maxTemp < 10) {
+                    this.tempResponse = "Pack for cold temperatures"
+                }
+                else if (this.response.minTemp > 20) {
+                    this.tempResponse = "Pack for hot temperatures"
+                } 
+                else if (this.response.minTemp > 10 && this.response.maxTemp < 20) {
+                    this.tempResponse = "Pack for warm temperatures"
+                }
+                else if (this.response.minTemp < 10 && this.response.maxTemp > 20) {
+                    this.tempResponse = "Pack for cold, warm and hot temperatures"
+                }
+                else if (this.response.minTemp < 10 && this.response.maxTemp < 20) {
+                    this.tempResponse = "Pack for cold and warm temperatures"
+                } else { this.tempResponse = "Pack for warm and hot temperatures"}
+                this.items = this.response.summary
+    
+                
+            })
+        }
+    }
+})
+</script>

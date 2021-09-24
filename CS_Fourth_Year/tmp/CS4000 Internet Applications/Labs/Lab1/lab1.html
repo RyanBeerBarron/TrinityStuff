@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<body id="body">
+
+<p>I'm busy counting.</p>
+<p1 id="paragraph"></p1>
+<button id="button" onclick="reset()">Go again?</button>
+<script>
+let count = 25
+
+function reset(){
+    if (confirm("Count again?")) {
+        document.getElementById("paragraph").innerHTML=""
+        countdown(25)
+        document.getElementById("button").style.visibility="hidden"
+    }
+    else {
+
+    }
+}
+
+
+function countdown(count) {
+    if (count <= 0) {
+        document.getElementById("paragraph").innerHTML+= "<br>" + 0
+        document.getElementById("button").style.visibility="visible"
+        return
+    }
+    let p = new Promise(function (resolve, reject) {
+        document.getElementById("paragraph").innerHTML+= "<br>" + count
+        setTimeout( _ => resolve(count-5), 5000)
+    })
+    p.then(function (value) {
+        countdown(value)
+    })
+}
+countdown(25)
+document.getElementById("button").style.visibility="hidden"
+</script>
+
+</body>
+</html>
+
